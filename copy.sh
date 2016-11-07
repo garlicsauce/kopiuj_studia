@@ -16,6 +16,8 @@ then
 	exit 1
 fi
 
+DEST="$1"
+
 for var in "$@"
 do
 	if [ -d "$var" ]
@@ -24,6 +26,8 @@ do
 	elif [ -f "$var" ]
 	then
 		echo "$var is a file"
+		echo "$var will be copied to $DEST"
+		cp $var $DEST
 	else
 		echo "$var is invalid"
 	fi
