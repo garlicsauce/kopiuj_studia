@@ -4,14 +4,14 @@ HELP="UŻYCIE:\n\tkopiuj DESTINATION SOURCE...\nOPIS:\n\tKopiuje pliki oraz fold
 
 if [ "$#" -lt 2 ]
 then
-    echo ${HELP}
+    echo "${HELP}"
     echo "Błąd - zbyt mała liczba argumentów!"
     exit 1
 fi
 
 if [ -e "$1" -a -f "$1" ]
 then
-    echo ${HELP}
+    echo "${HELP}"
     echo "Błąd - pierwszy argument nie może być plikiem!"
     exit 1
 elif ! [ -e "$1" ]
@@ -36,12 +36,12 @@ do
         tar -czvf ${var}${TAR_DIR_SUFFIX} ${var}
         cp -r ${var}${TAR_DIR_SUFFIX} ${DEST}/${var}${TAR_DIR_SUFFIX}
 	rm ${var}${TAR_DIR_SUFFIX}
-    elif [ -f "$var" ]
+    elif [ -f "${var}" ]
     then
 	cp ${var} ${DEST}
 	mv ${DEST}/${var} ${DEST}/${var}${FILE_SUFFIX}
     else
-	[ "${var}" != "$DEST" ] && echo "$var is invalid"
+	[ "${var}" != "${DEST}" ] && echo "${var} is invalid"
     fi
 done
 exit 0
